@@ -8,7 +8,17 @@ import zipfile
 import itertools
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
-
+"""
+1. plot_preds
+2. load_image
+3. make_confusion_matrix
+4. create_tensorboard_callback
+5. plot_loss_curves
+6. compare_histories
+7. unzip_data
+8. walk_through_dir
+9. calculate_results
+"""
 def plot_preds(master_path=custom_path, model=model):
   """Reads all the files in a folder and predicts on and plots each image with its prediction."""
   plt.figure(figsize=(27, 10))
