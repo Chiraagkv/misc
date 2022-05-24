@@ -19,7 +19,7 @@ from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 8. walk_through_dir
 9. calculate_results
 """
-def plot_preds(master_path=custom_path, model=model):
+def plot_preds(master_path, model):
   """Reads all the files in a folder and predicts on and plots each image with its prediction."""
   plt.figure(figsize=(27, 10))
   paths = [custom_path + i for i in os.listdir(master_path)]
