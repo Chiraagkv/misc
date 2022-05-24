@@ -5,9 +5,10 @@ import matplotlib.pyplot as plt
 import datetime
 import os
 import zipfile
+import itertools
 
 def plot_preds(master_path=custom_path, model=model):
-  ```Reads all the files in a folder and predicts on and plots each image with its prediction.```
+  """Reads all the files in a folder and predicts on and plots each image with its prediction."""
   plt.figure(figsize=(27, 10))
   paths = [custom_path + i for i in os.listdir(master_path)]
   for n, path in enumerate(paths):
@@ -20,12 +21,13 @@ def plot_preds(master_path=custom_path, model=model):
     plt.axis(False);
 
 def load_image(filepath, img_shape=(224, 224), scale=True):
-	```reads and preprocesses an image given its filepath```
+  """reads and preprocesses an image given its filepath"""
   image = tf.io.read_file(filepath)
   img = tf.io.decode_jpeg(image, channels=3)
   img = tf.image.resize(img, img_shape)
   img = img / 255. if scale else img
   return img
+
 def make_confusion_matrix(y_true, y_pred, classes=None, figsize=(10, 10), text_size=15, norm=False, savefig=False): 
   """Makes a labelled confusion matrix comparing predictions and ground truth labels.
 
@@ -45,11 +47,11 @@ def make_confusion_matrix(y_true, y_pred, classes=None, figsize=(10, 10), text_s
     A labelled confusion matrix plot comparing y_true and y_pred.
 
   Example usage:
-    make_confusion_matrix(y_true=test_labels, # ground truth test labels
+    `make_confusion_matrix(y_true=test_labels, # ground truth test labels
                           y_pred=y_preds, # predicted labels
                           classes=class_names, # array of class label names
                           figsize=(15, 15),
-                          text_size=10)
+                          text_size=10)`
   """  
   # Create the confustion matrix
   cm = confusion_matrix(y_true, y_pred)
@@ -121,7 +123,6 @@ def create_tensorboard_callback(dir_name, experiment_name):
   print(f"Saving TensorBoard log files to: {log_dir}")
   return tensorboard_callback
 
-# Plot the validation and training data separately
 
 def plot_loss_curves(history):
   """
