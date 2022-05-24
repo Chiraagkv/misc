@@ -6,6 +6,7 @@ import datetime
 import os
 import zipfile
 import itertools
+from sklearn.metrics import confusion_matrix
 
 def plot_preds(master_path=custom_path, model=model):
   """Reads all the files in a folder and predicts on and plots each image with its prediction."""
